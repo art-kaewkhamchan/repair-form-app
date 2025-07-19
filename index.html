@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบแจ้งซ่อม</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Custom styles to enhance Tailwind or for specific animations */
@@ -131,31 +129,26 @@
     <div class="container bg-white p-8 rounded-2xl shadow-xl max-w-2xl w-full mx-4 my-8">
         <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-8">ระบบแจ้งซ่อม</h2>
         <form id="repairForm" class="space-y-6">
-            <!-- Customer Name -->
             <div>
                 <label for="customerName" class="block text-gray-700 text-sm font-semibold mb-2">ชื่อลูกค้า <span class="text-red-500">*</span></label>
                 <input type="text" id="customerName" name="customerName" class="form-input" required placeholder="กรุณากรอกชื่อลูกค้า">
             </div>
 
-            <!-- Phone Number -->
             <div>
                 <label for="phoneNumber" class="block text-gray-700 text-sm font-semibold mb-2">เบอร์โทรศัพท์ <span class="text-red-500">*</span></label>
                 <input type="tel" id="phoneNumber" name="phoneNumber" class="form-input" required placeholder="กรุณากรอกเบอร์โทรศัพท์">
             </div>
 
-            <!-- Email (Optional) -->
             <div>
                 <label for="email" class="block text-gray-700 text-sm font-semibold mb-2">ที่อยู่อีเมล</label>
                 <input type="email" id="email" name="email" class="form-input" placeholder="กรุณากรอกอีเมล (ไม่บังคับ)">
             </div>
 
-            <!-- Line ID (Optional) -->
             <div>
                 <label for="lineId" class="block text-gray-700 text-sm font-semibold mb-2">ไลน์ไอดี</label>
                 <input type="text" id="lineId" name="lineId" class="form-input" placeholder="กรุณากรอกไลน์ไอดี (ไม่บังคับ)">
             </div>
 
-            <!-- Device Type -->
             <div>
                 <label for="deviceType" class="block text-gray-700 text-sm font-semibold mb-2">ประเภทอุปกรณ์ <span class="text-red-500">*</span></label>
                 <select id="deviceType" name="deviceType" class="form-select" required>
@@ -171,19 +164,16 @@
                 <input type="text" id="otherDeviceType" name="otherDeviceType" class="form-input hidden mt-3" placeholder="โปรดระบุประเภทอุปกรณ์">
             </div>
 
-            <!-- Model / Brand / Color -->
             <div>
                 <label for="modelBrandColor" class="block text-gray-700 text-sm font-semibold mb-2">รุ่น / ยี่ห้อ / สี <span class="text-red-500">*</span></label>
                 <input type="text" id="modelBrandColor" name="modelBrandColor" class="form-input" required placeholder="เช่น MacBook Pro M1, Dell XPS 15, iPhone 13 Pro สีดำ">
             </div>
 
-            <!-- Serial Number / IMei -->
             <div>
                 <label for="serialNumber" class="block text-gray-700 text-sm font-semibold mb-2">Serial Number / IMei <span class="text-red-500">*</span></label>
                 <input type="text" id="serialNumber" name="serialNumber" class="form-input" required placeholder="กรุณากรอก Serial Number หรือ IMei">
             </div>
 
-            <!-- Accessories -->
             <div class="space-y-2">
                 <label class="block text-gray-700 text-sm font-semibold mb-2">อุปกรณ์ที่นำมาด้วย</label>
                 <div class="flex items-center">
@@ -209,49 +199,41 @@
                 <input type="text" id="otherAccessories" name="otherAccessories" class="form-input hidden mt-3" placeholder="โปรดระบุอุปกรณ์อื่นๆ">
             </div>
 
-            <!-- Problem Description -->
             <div>
                 <label for="problemDescription" class="block text-gray-700 text-sm font-semibold mb-2">อาการเสีย / ปัญหา <span class="text-red-500">*</span></label>
                 <textarea id="problemDescription" name="problemDescription" rows="5" class="form-textarea" required placeholder="กรุณาอธิบายอาการเสียหรือปัญหาของอุปกรณ์โดยละเอียด"></textarea>
             </div>
 
-            <!-- Has Lock Code -->
             <div class="flex items-center">
                 <input type="checkbox" id="hasLockCode" name="hasLockCode" class="custom-checkbox">
                 <label for="hasLockCode" class="ml-2 text-gray-600">มีรหัสล็อกเครื่องหรือไม่</label>
             </div>
 
-            <!-- Lock Code / Pin (Conditional) -->
             <div id="lockCodePinGroup" class="hidden">
                 <label for="lockCodePin" class="block text-gray-700 text-sm font-semibold mb-2">รหัสล็อกเครื่อง / Pin</label>
                 <input type="text" id="lockCodePin" name="lockCodePin" class="form-input" placeholder="กรุณากรอกรหัสล็อกเครื่องหรือ Pin">
             </div>
 
-            <!-- Image Upload -->
             <div>
-                <label for="deviceImage" class="block text-gray-700 text-sm font-semibold mb-2">ภาพถ่าย สภาพเครื่อง</label>
-                <input type="file" id="deviceImage" name="deviceImage" accept="image/*" class="block w-full text-gray-700 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer">
+                <label for="deviceImage" class="block text-gray-700 text-sm font-semibold mb-2">ภาพถ่าย สภาพเครื่อง (สามารถเลือกได้หลายภาพ)</label>
+                <input type="file" id="deviceImage" name="deviceImage" accept="image/*" multiple class="block w-full text-gray-700 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer">
             </div>
 
-            <!-- Notes -->
             <div>
                 <label for="notes" class="block text-gray-700 text-sm font-semibold mb-2">หมายเหตุ</label>
                 <textarea id="notes" name="notes" rows="4" class="form-textarea" placeholder="เพิ่มหมายเหตุหรือข้อมูลอื่นๆ ที่เกี่ยวข้อง"></textarea>
             </div>
 
-            <!-- Submit Button -->
             <button type="submit" class="w-full py-3 px-6 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold rounded-xl shadow-lg hover:from-blue-600 hover:to-blue-800 transition duration-300 ease-in-out transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-opacity-75">
                 ส่งข้อมูล
             </button>
         </form>
     </div>
 
-    <!-- Message Box (Hidden by default) -->
     <div id="messageOverlay" class="overlay hidden"></div>
     <div id="messageBox" class="message-box hidden">
         <div id="loadingSpinner" class="loading-spinner hidden"></div>
-        <div id="messageIcon" class="mb-4 text-5xl"></div> <!-- Icon placeholder -->
-        <h3 id="messageTitle" class="text-2xl font-bold text-gray-800 mb-2"></h3>
+        <div id="messageIcon" class="mb-4 text-5xl"></div> <h3 id="messageTitle" class="text-2xl font-bold text-gray-800 mb-2"></h3>
         <p id="messageText" class="text-gray-600 mb-6"></p>
         <button id="messageCloseBtn" class="hidden">ตกลง</button>
     </div>
@@ -276,6 +258,7 @@
         const messageText = document.getElementById('messageText');
         const messageCloseBtn = document.getElementById('messageCloseBtn');
         const loadingSpinner = document.getElementById('loadingSpinner');
+        const deviceImageInput = document.getElementById('deviceImage'); // Get the image input element
 
         // Function to show message box
         function showMessage(title, text, isError = false, showCloseButton = true) {
@@ -401,43 +384,67 @@
                 data.lockCodePin = ''; // Clear lock code if checkbox is not checked
             }
 
-            // Handle image file
-            const imageFile = document.getElementById('deviceImage').files[0];
-            if (imageFile) {
-                const reader = new FileReader();
-                reader.readAsDataURL(imageFile);
-                reader.onload = async function() {
-                    data.imageData = reader.result.split(',')[1]; // Get base64 string without data:image/png;base64,
-                    data.imageFileName = imageFile.name; // Send file name too
+            // --- MODIFIED SECTION FOR MULTIPLE IMAGE UPLOAD ---
+            const imageFiles = deviceImageInput.files;
+            if (imageFiles.length > 0) {
+                const imageDataArray = [];
+                const imageFileNameArray = [];
+                let filesProcessed = 0;
 
-                    await sendData(data);
-                };
-                reader.onerror = function(error) {
-                    console.error('Error reading file:', error);
-                    showMessage('เกิดข้อผิดพลาด', 'ไม่สามารถอ่านไฟล์รูปภาพได้ โปรดลองอีกครั้ง', true);
-                };
+                for (let i = 0; i < imageFiles.length; i++) {
+                    const file = imageFiles[i];
+                    const reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        imageDataArray.push(e.target.result.split(',')[1]); // Get base64 string
+                        imageFileNameArray.push(file.name); // Send file name
+
+                        filesProcessed++;
+                        if (filesProcessed === imageFiles.length) {
+                            // All files processed, now send data
+                            data.imageData = imageDataArray.join('|||'); // Join with a distinct separator
+                            data.imageFileName = imageFileNameArray.join('|||'); // Join names with separator
+                            sendData(data);
+                        }
+                    };
+
+                    reader.onerror = function(error) {
+                        console.error('Error reading file:', error);
+                        showMessage('เกิดข้อผิดพลาด', 'ไม่สามารถอ่านไฟล์รูปภาพบางไฟล์ได้ โปรดลองอีกครั้ง', true);
+                        // Prevent further processing if there's an error with one file
+                        return;
+                    };
+                    reader.readAsDataURL(file);
+                }
             } else {
-                data.imageData = ''; // No image
+                // No images selected
+                data.imageData = '';
                 data.imageFileName = '';
-                await sendData(data);
+                sendData(data);
             }
+            // --- END OF MODIFIED SECTION ---
         });
 
         async function sendData(data) {
             try {
+                // To properly send multiple images to Google Apps Script,
+                // you will need to modify your Apps Script to handle an array of base64 strings
+                // and an array of file names. The current 'URLSearchParams' might not be ideal
+                // for large amounts of base64 data. For larger data or more robust handling,
+                // consider sending as JSON.
+
+                // For now, we're joining them with '|||' as a separator.
+                // Your Google Apps Script will need to split these strings back into arrays.
+
                 const response = await fetch(SCRIPT_URL, {
                     method: 'POST',
-                    mode: 'no-cors', // Required for Google Apps Script as it doesn't send CORS headers
+                    mode: 'no-cors',
                     headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Content-Type': 'application/x-www-form-urlencoded', // Keep for compatibility with existing Apps Script if not modified
                     },
-                    body: new URLSearchParams(data).toString() // Send as URL-encoded form data
+                    body: new URLSearchParams(data).toString()
                 });
 
-                // Due to 'no-cors' mode, we cannot directly read the response.
-                // We assume success if no network error occurred.
-                // The actual success/failure message will be handled by the GAS script
-                // and we'll just show a generic success message or a network error.
                 showMessage('ส่งข้อมูลสำเร็จ!', 'ข้อมูลของคุณถูกบันทึกเรียบร้อยแล้ว', false);
                 repairForm.reset(); // Clear the form
                 // Reset conditional fields visibility
